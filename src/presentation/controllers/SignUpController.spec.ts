@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import { SignUpController } from './SignUpController'
 
 describe('SignUpController', () => {
@@ -13,6 +15,7 @@ describe('SignUpController', () => {
     }
 
     const httpResponse = sut.handle(httpRequest)
-    expect(httpRequest.statusCode).toBe(400)
+    expect(httpResponse.statusCode).toBe(400)
+    expect(httpResponse.body).toEqual(new Error('Missing param: name'))
   })
 })
