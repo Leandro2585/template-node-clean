@@ -1,8 +1,6 @@
-import { EmailValidator } from '../protocols/EmailValidator'
+import { EmailValidator } from '../protocols'
 import { SignUpController } from './SignUpController'
-import { InvalidParamError } from '../errors/InvalidParamError'
-import { MissingParamError } from '../errors/MissingParamError'
-import { ServerError } from '../errors/ServerError'
+import { MissingParamError, InvalidParamError, ServerError } from '../errors'
 
 interface SutTypes {
   sut: SignUpController;
@@ -132,12 +130,8 @@ describe('SignUp Controller', () => {
         throw new Error()
       }
     }
-
     const emailValidatorStub = new EmailValidatorStub()
     const sut = new SignUpController(emailValidatorStub)
-
-    jest.spyOn(emailValidatorStub, 'isValid')
-      .mockReturnValueOnce(false)
 
     const httpRequest = {
       body: {
