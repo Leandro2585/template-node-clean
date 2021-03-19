@@ -1,4 +1,4 @@
-import { Encrypter } from '../../protocols/encrypter'
+import { Encrypter } from './DBAddAccountProtocols'
 import { DBAddAccount } from './DBAddAccount'
 
 interface SutTypes {
