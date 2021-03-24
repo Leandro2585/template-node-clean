@@ -1,9 +1,18 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./build",
+    "rootDir": "./src",
+    "baseUrl": "./src",
     "module": "commonjs",
     "target": "es2020",
     "esModuleInterop": true,
-    "allowJs": true
+    "allowJs": true,
+    "paths": {
+      "@data/*": ["data/*"],
+      "@domain/*": ["domain/*"],
+      "@infra/*": ["infra/*"],
+      "@presentation/*": ["presentation/*"],
+      "@utils/*": ["utils/*"]
+    }
   }
 }
