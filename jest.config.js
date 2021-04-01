@@ -2,7 +2,10 @@ const { pathsToModuleNameMapper } = require('ts-jest/utils')
 const { compilerOptions } = require('./tsconfig.json')
 module.exports = {
   roots: ['<rootDir>/src'],
-  collectCoverageFrom: ['<rooDir>/src/**/*.ts'],
+  collectCoverageFrom: [
+    '<rooDir>/src/**/*.ts',
+    '!<rooDir>/src/main/**'
+  ],
   coverageDirectory: 'coverage',
   moduleNameMapper: pathsToModuleNameMapper(
     compilerOptions.paths, { prefix: '<rootDir>/src/' }
