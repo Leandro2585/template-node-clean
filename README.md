@@ -13,91 +13,90 @@
   </a>
 
   <a href="https://github.com.br/Leandro2585">
-    <img alt="Feito pela Leandro" src="https://img.shields.io/badge/feito%20por-Leandro-%237519C1">
+    <img alt="Feito pela Leandro" src="https://img.shields.io/badge/made%20by-Leandro-%237519C1">
   </a>
 
 </p>
 
 <h4 align="center">
-	🚧  Clean Server :node.js Em Desenvolvimento 🚀 🚧
+	🚧  Clean Server :node.js In Development 🚀 🚧
 </h4>
 
 <p align="center">
- <a href="#-sobre-o-projeto">Sobre</a> •
- <a href="#-como-executar-o-projeto">Como executar</a> •
- <a href="#-tecnologias">Tecnologias</a> •
- <a href="#-autor">Autor</a> •
- <a href="#user-content--licença">Licença</a>
+ <a href="#-about-the-project">About</a> •
+ <a href="#-how-to-execute-the-project">How to execute</a> •
+ <a href="#-technologies">Technologies</a> •
+ <a href="#-how-to-contribute-to-the-project">How to contribute</a> •
+ <a href="#-author">Author</a> •
+ <a href="#-user-content--license">License</a>
 </p>
 
 
-## 💻 Sobre o projeto
+## 💻 About the project
 
 Clean Server - é uma forma de acelerar o processo da criação de um novo projeto, esse template foi desenvolvido considerando boa práticas de programação, tal como conceitos de arquitetura limpa.
 
 ---
 
-## 🚀 Como executar o projeto
+## 🚀 How to execute the project
 
 Esse template foi desenvolvido com Typescript, portanto certifique-se de que é usual para o seu contexto antes de fazer a instalação.
 
-### Pré-requisitos
+### Pre-requisites
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-#### 🎲 Rodando o Server
+### 🎲 Running the server
 
 ```bash
 
-# Clone este repositório
+# Clone this repository
 $ git clone git@github.com:Leandro2585/clean-server.git
 
-# Vá para a pasta server
+# Go to project folder
 $ cd clean-server
 
-# Instale as dependências
+# Install the dependencies
 $ npm install
 
-# Execute a aplicação em modo de desenvolvimento
+# Execute the application in development mode
 $ npm run start
 
-# O servidor inciará na porta:3333 - acesse http://localhost:3333
+# The server started at port:3333 - access http://localhost:3333
 
 ```
 
 ---
 
-## 🛠 Tecnologias
-
-As seguintes ferramentas foram usadas na construção do projeto:
+## 🛠 Technologies
 
 #### [](https://github.com/Leandro2585/clean-server#server-nodejs--typescript)**Clean Server**  ([NodeJS](https://nodejs.org/en/)  +  [TypeScript](https://www.typescriptlang.org/))
 
 -   **[Express](https://expressjs.com/)**
 
-> Veja o arquivo  [package.json](https://github.com/Leandro2585/clean-server/blob/master/package.json)
+> See the file  [package.json](https://github.com/Leandro2585/clean-server/blob/master/package.json)
 
 
-#### [](https://github.com/Leandro2585/clean-server#utilit%C3%A1rios)**Utilitários**
+#### [](https://github.com/Leandro2585/clean-server#utilit%C3%i1es)**Utilities**
 
--   Editor:  **[Visual Studio Code](https://code.visualstudio.com/)
--   Teste do Server:  **[Insomnia](https://insomnia.rest/)**
+-   Editor:  **[Visual Studio Code](https://code.visualstudio.com/)**
+-   Server Test:  **[Insomnia](https://insomnia.rest/)**
 ---
 
 
-## 💪 Como contribuir para o projeto
+## 💪 How to contribute to the project
 
-1. Faça um **fork** do projeto.
-2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
-3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: My new feature"`
-4. Envie as suas alterações: `git push origin my-feature`
-> Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](./CONTRIBUTING.md)
+1. Make a **fork** of project.
+2. Create a new branch with your changes: `git checkout -b my-feature`
+3. Save changes and create a commit message telling what you did: `git commit -m "feature: My new feature"`
+4. Submit your changes: `git push origin my-feature`
+> If you have any questions, check out this [guide on how to contribute to GitHub](./CONTRIBUTING.md)
 
 ---
 
-##  Autor
+##  Author
 
 <a href="https://github.com/Leandro2585">
  <img style="border-radius: 50%" src="https://avatars3.githubusercontent.com/u/380327?s=460&u=61b426b901b8fe02e12019b1fdb67bf0072d4f00&v=4" width="100px;" alt=""/>
@@ -107,14 +106,14 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ---
 
-## 📝 Licença
+## 📝 License
 
-Este projeto esta sobe a licença [MIT](./LICENSE).
+This project is under license [MIT](./LICENSE).
 
-Feito com ❤️ por Leandro Real 👋🏽 [Entre em contato!](https://www.linkedin.com/in/leandro-r-434b811a5/)
+Done with ❤️ by Leandro Real 👋🏽 [Contact!](https://www.linkedin.com/in/leandro-r-434b811a5/)
 
 ---
 
-##  Versões do README
+## README Versions
 
 [Português 🇧🇷](./README-pt.md)  |  [Inglês 🇺🇸](./README.md)
