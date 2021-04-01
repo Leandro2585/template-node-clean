@@ -1,4 +1,4 @@
-import { Controller, HttpRequest } from '@presentation/protocols'
+import { Controller, HttpRequest, HttpResponse } from '@presentation/protocols'
 import { Request, Response } from 'express'
 
 export const adaptRoute = (controller: Controller) => {
@@ -6,7 +6,8 @@ export const adaptRoute = (controller: Controller) => {
     const httpRequest: HttpRequest = {
       body: request.body
     }
-    const httpResponse = await controller.handle(httpRequest)
+    const httpResponse: HttpResponse = await controller.handle(httpRequest)
+
     response.status(httpResponse.statusCode).json(httpResponse.body)
   }
 }
