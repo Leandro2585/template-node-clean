@@ -79,7 +79,11 @@ describe('DBAddAccount Usecase', () => {
     const createSpy = jest.spyOn(addAccountRepositoryStub, 'create')
 
     await sut.create(fakeAccountData)
-    expect(createSpy).toHaveBeenCalledWith(fakeAccountData)
+    expect(createSpy).toHaveBeenCalledWith({
+      name: 'valid_name',
+      email: 'valid_email',
+      password: 'hashed_password'
+    })
   })
 
   test('should throw if AddAccountRepository throws', async () => {
