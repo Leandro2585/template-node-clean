@@ -203,4 +203,11 @@ describe('SignUp Controller', () => {
     await sut.handle(fakeRequest)
     expect(validateSpy).toHaveBeenCalledWith(fakeRequest.body)
   })
+
+  test('should return 400 if validations returns an error', async () => {
+    const { sut, validationStub, fakeRequest } = makeSut()
+    jest.spyOn(validationStub, 'validate').mockReturnValueOnce(new MissingParamError('any_field'))
+    const httpResponse = await sut.handle(fakeRequest)
+    expect(httpResponse).toEqual(badRequest(new MissingParamError('any_field')))
+  })
 })
