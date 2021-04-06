@@ -3,7 +3,7 @@ import { DBAddAccount } from '@data/usecases/AddAccount/DBAddAccount'
 import { BCryptAdapter } from '@infra/criptography/BCryptAdapter'
 import { AccountMongoRepository } from '@infra/database/mongodb/accountRepository/Account'
 import { Controller } from '@presentation/protocols'
-import { LogControllerDecorator } from '../decorators/log'
+import { LogControllerDecorator } from '../../decorators/log'
 import { LogMongoRepository } from '@infra/database/mongodb/logRepository/log'
 import { makeSignUpValidation } from './SignUpValidation'
 
