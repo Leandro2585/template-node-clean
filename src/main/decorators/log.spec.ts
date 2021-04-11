@@ -1,4 +1,4 @@
-import { LogErrorRepository } from '@data/protocols/LogErrorRepository'
+import { LogErrorRepository } from '@data/protocols/database/LogErrorRepository'
 import { AccountModel } from '@domain/models/Account'
 import { ok, serverError } from '@shared/helpers/http/HttpHelper'
 import { Controller, HttpRequest, HttpResponse } from '@shared/protocols'
