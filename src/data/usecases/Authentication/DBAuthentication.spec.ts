@@ -1,10 +1,12 @@
-import { HashComparer } from '../../protocols/criptography/HashComparer'
-import { AccountModel } from '@domain/models/Account'
-import { AuthenticationModel } from '@domain/usecases/Authentication'
-import { LoadAccountByEmailRepository } from '../../protocols/database/LoadAccountByEmailRepository'
 import { DBAuthentication } from './DBAuthentication'
-import { TokenGenerator } from '../../protocols/criptography/TokenGenerator'
-import { UpdateAccessTokenRepository } from '../../protocols/database/UpdateAccessTokenRepository'
+import {
+  AccountModel,
+  AuthenticationModel,
+  HashComparer,
+  LoadAccountByEmailRepository,
+  TokenGenerator,
+  UpdateAccessTokenRepository
+} from './DBAuthenticationProtocols'
 
 interface SutTypes {
   sut: DBAuthentication;
