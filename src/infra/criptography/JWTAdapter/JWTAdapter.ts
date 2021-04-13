@@ -8,7 +8,7 @@ export class JWTAdapter implements Encrypter {
   }
 
   async encrypt (payload: string): Promise<string> {
-    await jwt.sign({ id: payload }, this.secret)
-    return null
+    const accessToken = await jwt.sign({ id: payload }, this.secret)
+    return accessToken
   }
 }
