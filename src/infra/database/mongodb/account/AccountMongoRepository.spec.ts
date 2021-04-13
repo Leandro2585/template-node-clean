@@ -1,6 +1,6 @@
 import { Collection } from 'mongodb'
 import { MongoHelper } from '../helpers/MongoHelper'
-import { AccountMongoRepository } from './Account'
+import { AccountMongoRepository } from './AccountMongoRepository'
 
 let accountCollection: Collection
 
@@ -29,7 +29,7 @@ describe('Account Mongo Repository', () => {
     expect(account).toBeTruthy()
     expect(account.id).toBeTruthy()
     expect(account.name).toBe('any_name')
-    expect(account.email).toBe('any_email')
+    expect(account.email).toBe('any_email@mail.com')
     expect(account.password).toBe('any_password')
   })
 
