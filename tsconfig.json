@@ -11,8 +11,7 @@
       "@main/*": ["main/*"],
       "@domain/*": ["domain/*"],
       "@infra/*": ["infra/*"],
-      "@shared/*": ["shared/*"],
-      "@utils/*": ["utils/*"]
+      "@shared/*": ["shared/*"]
     }
   }
 }
