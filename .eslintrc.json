@@ -16,6 +16,7 @@
     ],
     "rules": {
         "@typescript-eslint/strict-boolean-expressions": "off",
+        "no-useless-constructor": "off",
         "no-undef": "off"
     }
 }
