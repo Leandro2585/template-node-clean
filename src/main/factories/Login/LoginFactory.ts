@@ -8,6 +8,7 @@ import { LogControllerDecorator } from '@main/decorators/LogControllerDecorator'
 import { AccountMongoRepository } from '@infra/database/mongodb/account/AccountMongoRepository'
 import { BCryptAdapter } from '@infra/criptography/BCryptAdapter/BCryptAdapter'
 import { JWTAdapter } from '@infra/criptography/JWTAdapter/JWTAdapter'
+
 export const makeLoginController = (): Controller => {
   const salt = 12
   const bcryptAdapter = new BCryptAdapter(salt)
