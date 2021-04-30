@@ -15,7 +15,7 @@ services:
     restart: always
     command: bash -c "yarn install --only=prod && yarn debug"
     volumes:
-      - ./build:/usr/src/clean-node/build
+      - ./build:/usr/src/clean-node/build/
       - ./package.json:/usr/src/clean-node/package.json
     ports: 
       - "3333:3333"
