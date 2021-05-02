@@ -1,4 +1,4 @@
-import { SignUpController } from '@shared/controllers/SignUp/SignUpController'
+import { SignUpController } from '@shared/controllers/Login/SignUp/SignUpController'
 import { Controller } from '@shared/protocols'
 import { makeSignUpValidation } from './SignUpValidationFactory'
 import { makeDBAuthentication } from '@main/factories/usecases/Authentication/DBAuthenticationFactory'
