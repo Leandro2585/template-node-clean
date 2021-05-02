@@ -1,6 +1,6 @@
 {
   "name": "clean-node",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Leandro2585 <leo.real2585@gmail.com>",
   "description": "NodeJS Api server template using concepts design patterns, clean code an SOLID principles",
   "main": "index.js",
