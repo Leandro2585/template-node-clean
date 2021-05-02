@@ -1,5 +1,5 @@
 import { EmailValidation } from './EmailValidation'
-import { EmailValidator } from '../../protocols'
+import { EmailValidator } from '../protocols/EmailValidator'
 import { InvalidParamError } from '@shared/errors'
 
 interface SutTypes {

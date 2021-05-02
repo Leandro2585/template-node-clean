@@ -11,6 +11,7 @@
       "@main/*": ["main/*"],
       "@domain/*": ["domain/*"],
       "@infra/*": ["infra/*"],
+      "@validation/*": ["validation/*"],
       "@shared/*": ["shared/*"]
     }
   },
