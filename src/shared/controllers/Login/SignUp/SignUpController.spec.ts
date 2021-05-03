@@ -98,13 +98,13 @@ describe('SignUp Controller', () => {
     const { sut, addAccountStub } = makeSut()
     jest.spyOn(addAccountStub, 'create').mockReturnValueOnce(new Promise(resolve => resolve(null)))
     const httpResponse = await sut.handle(makeFakeRequest())
-    expect(httpResponse).toEqual(ok({ accessToken: 'any_token' }))
+    expect(httpResponse).toEqual(forbidden(new EmailInUseError()))
   })
 
   test('should return 200 if valid data is provided', async () => {
     const { sut } = makeSut()
     const httpResponse = await sut.handle(makeFakeRequest())
-    expect(httpResponse).toEqual(forbidden(new EmailInUseError()))
+    expect(httpResponse).toEqual(ok({ accessToken: 'any_token' }))
   })
 
   test('should call Validation with correct value', async () => {
