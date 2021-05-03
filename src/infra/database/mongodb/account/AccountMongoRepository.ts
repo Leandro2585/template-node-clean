@@ -26,7 +26,7 @@ export class AccountMongoRepository implements AddAccountRepository, LoadAccount
       accessToken: token,
       role
     })
-    return MongoHelper.map(account)
+    return account && MongoHelper.map(account)
   }
 
   async updateAccessToken (id: string, token: string): Promise<void> {
