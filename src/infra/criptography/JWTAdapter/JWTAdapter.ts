@@ -11,6 +11,7 @@ export class JWTAdapter implements Encrypter, Decrypter {
   }
 
   async decrypt (payload: string): Promise<string> {
-    throw new Error('Method not implemented.')
+    await jwt.verify(payload, this.secret)
+    return null
   }
 }
