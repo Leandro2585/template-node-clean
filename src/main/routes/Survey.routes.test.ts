@@ -8,6 +8,24 @@ import { Collection } from 'mongodb'
 let surveyCollection: Collection
 let accountCollection: Collection
 
+const makeAccessToken = async (): Promise<string> => {
+  const response = await accountCollection.insertOne({
+    name: 'John Doe',
+    email: 'johndoe@mail.com',
+    password: '123456'
+  })
+  const id = response.ops[0]._id
+  const accessToken = sign({ id }, env.jwtSecret)
+  await accountCollection.updateOne({
+    _id: id
+  }, {
+    $set: {
+      accessToken
+    }
+  })
+  return accessToken
+}
+
 describe('Survey Routes', () => {
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL)
@@ -41,21 +59,7 @@ describe('Survey Routes', () => {
     })
 
     test('should return 204 on create survey with valid accessToken', async () => {
-      const response = await accountCollection.insertOne({
-        name: 'John Doe',
-        email: 'johndoe@mail.com',
-        password: '123456',
-        role: 'admin'
-      })
-      const id = response.ops[0]._id
-      const accessToken = sign({ id }, env.jwtSecret)
-      await accountCollection.updateOne({
-        _id: id
-      }, {
-        $set: {
-          accessToken
-        }
-      })
+      const accessToken = await makeAccessToken()
       await request(app)
         .post('/api/surveys')
         .set('x-access-token', accessToken)
@@ -79,21 +83,8 @@ describe('Survey Routes', () => {
         .expect(403)
     })
 
-    test('should return 200 on load surveys with valid accessToken', async () => {
-      const response = await accountCollection.insertOne({
-        name: 'John Doe',
-        email: 'johndoe@mail.com',
-        password: '123456'
-      })
-      const id = response.ops[0]._id
-      const accessToken = sign({ id }, env.jwtSecret)
-      await accountCollection.updateOne({
-        _id: id
-      }, {
-        $set: {
-          accessToken
-        }
-      })
+    test('should return 204 on load surveys with valid accessToken', async () => {
+      const accessToken = await makeAccessToken()
       await surveyCollection.insertMany([{
         question: 'any_question',
         answers: [{
@@ -105,7 +96,7 @@ describe('Survey Routes', () => {
       await request(app)
         .get('/api/surveys')
         .set('x-access-token', accessToken)
-        .expect(200)
+        .expect(204)
     })
   })
 })
