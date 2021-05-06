@@ -1,6 +1,4 @@
-import { LoadAccountByTokenRepository } from '../../protocols/database/account/LoadAccountByTokenRepository'
-import { Decrypter } from '../../protocols/criptography/Decrypter'
-import { AccountModel } from '../AddAccount/DBAddAccountProtocols'
+import { AccountModel, Decrypter, LoadAccountByTokenRepository } from './DBLoadAccountByTokenProtocols'
 import { DBLoadAccountByToken } from './DBLoadAccountByToken'
 
 type SutTypes = {
