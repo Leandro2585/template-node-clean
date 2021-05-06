@@ -1,7 +1,7 @@
 import { Hasher, AccountModel, AddAccountModel, AddAccountRepository, LoadAccountByEmailRepository } from './DBAddAccountProtocols'
 import { DBAddAccount } from './DBAddAccount'
 
-interface SutTypes {
+type SutTypes = {
   sut: DBAddAccount;
   hasherStub: Hasher;
   addAccountRepositoryStub: AddAccountRepository;

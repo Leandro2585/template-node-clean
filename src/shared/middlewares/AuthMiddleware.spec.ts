@@ -3,7 +3,7 @@ import { AccessDeniedError } from '@shared/errors'
 import { forbidden, ok, serverError } from '@shared/helpers/http/HttpHelper'
 import { AuthMiddleware } from './AuthMiddleware'
 
-interface SutTypes {
+type SutTypes = {
   sut: AuthMiddleware;
   loadAccountByTokenStub: LoadAccountByToken;
 }

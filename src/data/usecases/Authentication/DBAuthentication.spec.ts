@@ -8,7 +8,7 @@ import {
   UpdateAccessTokenRepository
 } from './DBAuthenticationProtocols'
 
-interface SutTypes {
+type SutTypes = {
   sut: DBAuthentication;
   loadAccountByEmailRepositoryStub: LoadAccountByEmailRepository;
   encrypterStub: Encrypter;

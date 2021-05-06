@@ -3,7 +3,7 @@ import { AddSurveyController } from './AddSurveyController'
 import { badRequest, noContent, serverError } from '../../../helpers/http/HttpHelper'
 import MockDate from 'mockdate'
 
-interface SutTypes {
+type SutTypes = {
   sut: AddSurveyController;
   validationStub: Validation;
   addSurveyStub: AddSurvey;

@@ -3,7 +3,7 @@ import { Decrypter } from '../../protocols/criptography/Decrypter'
 import { AccountModel } from '../AddAccount/DBAddAccountProtocols'
 import { DBLoadAccountByToken } from './DBLoadAccountByToken'
 
-interface SutTypes {
+type SutTypes = {
   sut: DBLoadAccountByToken;
   decrypterStub: Decrypter;
   loadAccountByTokenRepositoryStub: LoadAccountByTokenRepository;

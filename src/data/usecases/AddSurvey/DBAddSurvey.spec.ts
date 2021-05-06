@@ -2,7 +2,7 @@ import MockDate from 'mockdate'
 import { AddSurveyModel, AddSurveyRepository } from './DBAddSurveyProtocols'
 import { DBAddSurvey } from './DBAddSurvey'
 
-interface SutTypes {
+type SutTypes = {
   sut: DBAddSurvey;
   addSurveyRepositoryStub: AddSurveyRepository;
 }
