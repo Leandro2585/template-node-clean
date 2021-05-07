@@ -1,8 +1,6 @@
 import { Collection } from 'mongodb'
-import { MongoHelper } from './SurveyResultMongoRepositoryProtocols'
+import { MongoHelper, SurveyModel, AccountModel } from './SurveyResultMongoRepositoryProtocols'
 import { SurveyResultMongoRepository } from './SurveyResultMongoRepository'
-import { AccountModel } from '../account/AccountMongoRepositoryProtocols'
-import { SurveyModel } from '../Survey/SurveyMongoRepositoryProtocols'
 
 let surveyCollection: Collection
 let accountCollection: Collection
@@ -65,6 +63,27 @@ describe('SurveyResult Mongo Repository', () => {
       expect(surveyResult).toBeTruthy()
       expect(surveyResult.id).toBeTruthy()
       expect(surveyResult.answer).toBe(survey.answers[0].answer)
+    })
+
+    test('should update survey result if its not new', async () => {
+      const survey = await makeSurvey()
+      const account = await makeAccount()
+      const response = await surveyResultCollection.insertOne({
+        surveyId: survey.id,
+        accountId: account.id,
+        answer: survey.answers[0].answer,
+        date: new Date()
+      })
+      const sut = makeSut()
+      const surveyResult = await sut.save({
+        surveyId: survey.id,
+        accountId: account.id,
+        answer: survey.answers[1].answer,
+        date: new Date()
+      })
+      expect(surveyResult).toBeTruthy()
+      expect(surveyResult.id).toEqual(response.ops[0]._id)
+      expect(surveyResult.answer).toBe(survey.answers[1].answer)
     })
   })
 })
