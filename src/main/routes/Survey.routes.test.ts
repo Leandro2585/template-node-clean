@@ -20,7 +20,8 @@ const makeAccessToken = async (): Promise<string> => {
     _id: id
   }, {
     $set: {
-      accessToken
+      accessToken,
+      role: 'admin'
     }
   })
   return accessToken
@@ -96,7 +97,7 @@ describe('Survey Routes', () => {
       await request(app)
         .get('/api/surveys')
         .set('x-access-token', accessToken)
-        .expect(204)
+        .expect(200)
     })
   })
 })
