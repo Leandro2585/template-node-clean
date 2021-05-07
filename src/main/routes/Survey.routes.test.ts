@@ -12,7 +12,8 @@ const makeAccessToken = async (): Promise<string> => {
   const response = await accountCollection.insertOne({
     name: 'John Doe',
     email: 'johndoe@mail.com',
-    password: '123456'
+    password: '123456',
+    role: 'admin'
   })
   const id = response.ops[0]._id
   const accessToken = sign({ id }, env.jwtSecret)
@@ -20,8 +21,7 @@ const makeAccessToken = async (): Promise<string> => {
     _id: id
   }, {
     $set: {
-      accessToken,
-      role: 'admin'
+      accessToken
     }
   })
   return accessToken
