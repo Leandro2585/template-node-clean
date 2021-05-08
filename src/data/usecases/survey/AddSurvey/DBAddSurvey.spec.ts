@@ -1,24 +1,16 @@
 import MockDate from 'mockdate'
-import { AddSurveyParams, AddSurveyRepository } from './DBAddSurveyProtocols'
+import { AddSurveyRepository } from './DBAddSurveyProtocols'
 import { DBAddSurvey } from './DBAddSurvey'
 import { mockAddSurveyParams, throwError } from '@domain/test'
+import { mockAddSurveyRepository } from '@data/test'
 
 type SutTypes = {
   sut: DBAddSurvey;
   addSurveyRepositoryStub: AddSurveyRepository;
 }
 
-const makeAddSurveyRepository = (): AddSurveyRepository => {
-  class AddSurveyRepositoryStub implements AddSurveyRepository {
-    create (surveyData: AddSurveyParams): Promise<void> {
-      return new Promise(resolve => resolve())
-    }
-  }
-  return new AddSurveyRepositoryStub()
-}
-
 const makeSut = (): SutTypes => {
-  const addSurveyRepositoryStub = makeAddSurveyRepository()
+  const addSurveyRepositoryStub = mockAddSurveyRepository()
   const sut = new DBAddSurvey(addSurveyRepositoryStub)
   return {
     sut,
