@@ -2,7 +2,8 @@ module.exports = {
 
   ignore: [
     'src/**/*.test.ts', 'build/**/*.test.js',
-    'src/**/*.spec.ts', 'build/**/*.spec.js'
+    'src/**/*.spec.ts', 'build/**/*.spec.js',
+    'src/**/test/**'
   ],
   presets: [
     ['@babel/preset-env', { targets: { node: 'current' } }],

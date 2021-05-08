@@ -1,6 +1,6 @@
-import { makeLogControllerDecorator } from '../../decorators/LogControllerDecoratorFactory'
+import { makeLogControllerDecorator } from '@main/factories/decorators/LogControllerDecoratorFactory'
 import { makeAddSurveysValidation } from './AddSurveyValidationFactory'
-import { makeDBAddSurvey } from '../../usecases/AddSurvey/DBAddSurveyFactory'
+import { makeDBAddSurvey } from '@main/factories/usecases/survey/AddSurvey/DBAddSurveyFactory'
 import { AddSurveyController } from '@shared/controllers/survey/AddSurvey/AddSurveyController'
 import { Controller } from '@shared/protocols'
 

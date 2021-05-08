@@ -1,6 +1,7 @@
+import { HashComparer, LoadAccountByEmailRepository, Encrypter, UpdateAccessTokenRepository } from './DBAuthenticationProtocols'
+import { mockEncrypter, mockHashComparer, mockLoadAccountByEmailRepository, mockUpdateAccessTokenRepository } from '@data/test'
+import { mockAuthenticationParams, throwError } from '@domain/test'
 import { DBAuthentication } from './DBAuthentication'
-import { AccountModel, HashComparer, LoadAccountByEmailRepository, Encrypter, UpdateAccessTokenRepository } from './DBAuthenticationProtocols'
-import { mockAccountModel, mockAuthenticationParams, throwError } from '@domain/test'
 
 type SutTypes = {
   sut: DBAuthentication;
@@ -10,47 +11,11 @@ type SutTypes = {
   updateAccessTokenRepositoryStub: UpdateAccessTokenRepository;
 }
 
-const makeLoadAccountByEmailRepository = (): LoadAccountByEmailRepository => {
-  class LoadAccountByEmailRepositoryStub implements LoadAccountByEmailRepository {
-    async loadByEmail (email: string): Promise<AccountModel> {
-      return new Promise(resolve => resolve(mockAccountModel()))
-    }
-  }
-  return new LoadAccountByEmailRepositoryStub()
-}
-
-const makeHashComparer = (): HashComparer => {
-  class HashComparerStub implements HashComparer {
-    async compare (value: string, hash: string): Promise<boolean> {
-      return new Promise(resolve => resolve(true))
-    }
-  }
-  return new HashComparerStub()
-}
-
-const makeEncrypter = (): Encrypter => {
-  class EncrypterStub implements Encrypter {
-    encrypt (payload: string): Promise<string> {
-      return new Promise(resolve => resolve('any_token'))
-    }
-  }
-  return new EncrypterStub()
-}
-
-const makeUpdateAccessTokenRepository = (): UpdateAccessTokenRepository => {
-  class UpdateAccessTokenRepositoryStub implements UpdateAccessTokenRepository {
-    async updateAccessToken (id: string, token: string): Promise<void> {
-      return new Promise(resolve => resolve())
-    }
-  }
-  return new UpdateAccessTokenRepositoryStub()
-}
-
 const makeSut = (): SutTypes => {
-  const loadAccountByEmailRepositoryStub = makeLoadAccountByEmailRepository()
-  const updateAccessTokenRepositoryStub = makeUpdateAccessTokenRepository()
-  const hashComparerStub = makeHashComparer()
-  const encrypterStub = makeEncrypter()
+  const loadAccountByEmailRepositoryStub = mockLoadAccountByEmailRepository()
+  const updateAccessTokenRepositoryStub = mockUpdateAccessTokenRepository()
+  const hashComparerStub = mockHashComparer()
+  const encrypterStub = mockEncrypter()
   const sut = new DBAuthentication(
     loadAccountByEmailRepositoryStub,
     hashComparerStub,

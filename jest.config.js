@@ -4,7 +4,8 @@ module.exports = {
   roots: ['<rootDir>/src'],
   collectCoverageFrom: [
     '<rooDir>/src/**/*.ts',
-    '!<rooDir>/src/main/**'
+    '!<rooDir>/src/main/**',
+    '!**/test/**'
   ],
   coverageDirectory: 'coverage',
   moduleNameMapper: pathsToModuleNameMapper(

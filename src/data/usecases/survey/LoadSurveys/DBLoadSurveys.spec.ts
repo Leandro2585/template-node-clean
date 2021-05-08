@@ -1,24 +1,16 @@
-import { SurveyModel, LoadSurveysRepository } from './DBLoadSurveysProtocols'
+import { LoadSurveysRepository } from './DBLoadSurveysProtocols'
+import { mockSurveysModelArray, throwError } from '@domain/test'
+import { mockLoadSurveysRepository } from '@data/test'
 import { DBLoadSurveys } from './DBLoadSurveys'
 import MockDate from 'mockdate'
-import { mockSurveysModelArray, throwError } from '@domain/test'
 
 type SutTypes = {
   sut: DBLoadSurveys;
   loadSurveysRepositoryStub: LoadSurveysRepository;
 }
 
-const makeLoadSurveysRepository = () => {
-  class LoadSurveysRepositoryStub implements LoadSurveysRepository {
-    loadAll (): Promise<SurveyModel[]> {
-      return new Promise(resolve => resolve(mockSurveysModelArray()))
-    }
-  }
-  return new LoadSurveysRepositoryStub()
-}
-
 const makeSut = (): SutTypes => {
-  const loadSurveysRepositoryStub = makeLoadSurveysRepository()
+  const loadSurveysRepositoryStub = mockLoadSurveysRepository()
   const sut = new DBLoadSurveys(loadSurveysRepositoryStub)
   return {
     sut,
