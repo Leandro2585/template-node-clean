@@ -8,7 +8,7 @@ export const mockAddAccountParams = (): AddAccountParams => ({
 })
 
 export const mockAccountModel = (): AccountModel => {
-  return Object.assign({}, mockAddAccountParams(), { id: 'any_id' })
+  return Object.assign({}, mockAddAccountParams(), { id: 'any_id', password: 'hashed_password' })
 }
 
 export const mockAuthenticationParams = (): AuthenticationParams => ({
