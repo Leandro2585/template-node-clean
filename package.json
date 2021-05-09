@@ -6,7 +6,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node -r ./tsconfig-paths build/main/server.js",
+    "start": "node build/main/server.js",
     "build": "rimraf build && babel src --extensions \".js,.ts\" --out-dir build",
     "debug": "nodemon -L --watch ./build --inspect=0.0.0.0:9222 --nolazy -r ./tsconfig-paths ./build/main/server.js",
     "up": "yarn build && docker-compose up -d",
@@ -77,6 +77,7 @@
     "@infra": "build/infra",
     "@data": "build/data",
     "@main": "build/main",
-    "@shared": "build/shared"
+    "@shared": "build/shared",
+    "@validation": "build/validation"
   }
 }
