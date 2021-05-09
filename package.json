@@ -4,7 +4,7 @@
   "author": "Leandro2585 <leo.real2585@gmail.com>",
   "description": "NodeJS Api server template using concepts design patterns, clean code an SOLID principles",
   "main": "index.js",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "start": "node build/main/server.js",
     "build": "rimraf build && babel src --extensions \".js,.ts\" --out-dir build",

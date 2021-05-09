@@ -108,7 +108,7 @@ $ npm run start
 
 ## 📝 License
 
-This project is under license [MIT](./LICENSE).
+This project is under license [GPL](https://spdx.org/licenses/CPL-3.0-or-later.html).
 
 Done with ❤️ by Leandro Real 👋🏽 [Contact!](https://www.linkedin.com/in/leandro-r-434b811a5/)
 
