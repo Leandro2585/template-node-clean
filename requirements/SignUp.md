@@ -1,6 +1,6 @@
 # Sign Up
 
-> ## Success caif
+> ## Success case
 
 1. Receives a **POST** type request on the route **/api/signup**
 2. Valid mandatory data **name**, **email**, **password** and **confirmPassword**
