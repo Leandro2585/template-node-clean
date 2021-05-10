@@ -1,5 +1,5 @@
-export const badRequest = {
-  description: 'Requisição inválida',
+export const forbidden = {
+  description: 'Acesso negado',
   content: {
     'application/json': {
       schema: {
