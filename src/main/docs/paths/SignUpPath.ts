@@ -1,9 +1,9 @@
 export const signUpPath = {
   post: {
-    tags: ['Login'],
+    tags: ['Account'],
     summary: 'API for create account of user',
     requestBody: {
-      description: 'success',
+      description: 'Success',
       content: {
         'application/json': {
           schema: {
@@ -14,7 +14,7 @@ export const signUpPath = {
     },
     responses: {
       200: {
-        description: 'success',
+        description: 'Success',
         content: {
           'application/json': {
             schema: {

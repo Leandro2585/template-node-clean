@@ -1,5 +1,5 @@
 export const forbidden = {
-  description: 'Acesso negado',
+  description: 'Access denied',
   content: {
     'application/json': {
       schema: {

@@ -1,9 +1,9 @@
 export const loginPath = {
   post: {
-    tags: ['Login'],
+    tags: ['Account'],
     summary: 'API for authenticate user',
     requestBody: {
-      description: 'success',
+      description: 'Success',
       content: {
         'application/json': {
           schema: {
@@ -14,7 +14,7 @@ export const loginPath = {
     },
     responses: {
       200: {
-        description: 'success',
+        description: 'Success',
         content: {
           'application/json': {
             schema: {
