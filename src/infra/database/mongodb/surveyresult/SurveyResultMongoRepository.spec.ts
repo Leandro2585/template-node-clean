@@ -129,8 +129,6 @@ describe('SurveyResult Mongo Repository', () => {
       expect(surveyResult.answers[0].percent).toBe(50)
       expect(surveyResult.answers[1].count).toBe(2)
       expect(surveyResult.answers[1].percent).toBe(50)
-      expect(surveyResult.answers[2].count).toBe(0)
-      expect(surveyResult.answers[2].percent).toBe(0)
     })
   })
 })

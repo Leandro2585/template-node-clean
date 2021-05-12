@@ -15,7 +15,7 @@ type SutTypes = {
   fakeServerErrorStub: HttpResponse;
 }
 
-const makeFakeRequest = (): HttpRequest => ({
+const mockRequest = (): HttpRequest => ({
   body: {
     name: 'any_name',
     email: 'any_mail@mail.com',
@@ -43,7 +43,7 @@ const makeController = (): Controller => {
 const makeSut = (): SutTypes => {
   const controllerStub = makeController()
   const logErrorRepositoryStub = mockLogErrorRepository()
-  const fakeRequest = makeFakeRequest()
+  const fakeRequest = mockRequest()
   const fakeAccount = mockAccountModel()
   const fakeServerErrorStub = makeFakeServerError()
   const sut = new LogControllerDecorator(controllerStub, logErrorRepositoryStub)
