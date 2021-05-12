@@ -34,19 +34,19 @@
 
 ## 💻 About the project
 
-Clean Server - é uma forma de acelerar o processo da criação de um novo projeto, esse template foi desenvolvido considerando boa práticas de programação, tal como conceitos de arquitetura limpa.
+Template Clean Server - is a way to speed up the process of creating a new node backend project, this template was developed considering good programming practices, as well as clean architecture concepts.
 
 ---
 
 ## 🚀 How to execute the project
 
-Esse template foi desenvolvido com Typescript, portanto certifique-se de que é usual para o seu contexto antes de fazer a instalação.
+This template was developed with Typescript, so make sure it is usual for your context before installing.
 
 ### Pre-requisites
 
-Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+Before you start, you will need to have the following tools installed on your machine
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+Moreover it is good to have a dynamic editor to work with the code as [VSCode](https://code.visualstudio.com/)
 
 ### 🎲 Running the server
 
