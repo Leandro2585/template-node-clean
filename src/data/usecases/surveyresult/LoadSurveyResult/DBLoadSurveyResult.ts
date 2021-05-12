@@ -1,6 +1,4 @@
-import { LoadSurveyByIdRepository } from '@data/protocols/database/survey/LoadSurveyByIdRepository'
-import { SurveyModel } from '@domain/models/Survey'
-import { LoadSurveyResult, LoadSurveyResultRepository, SurveyResultModel } from './DBLoadSurveyResultProtocols'
+import { LoadSurveyResult, LoadSurveyResultRepository, LoadSurveyByIdRepository, SurveyResultModel } from './DBLoadSurveyResultProtocols'
 
 export class DBLoadSurveyResult implements LoadSurveyResult {
   constructor (
@@ -8,10 +6,21 @@ export class DBLoadSurveyResult implements LoadSurveyResult {
     private readonly loadSurveyByIdRepository: LoadSurveyByIdRepository
   ) {}
 
-  async load (surveyId: string): Promise<SurveyResultModel | SurveyModel> {
-    const surveyResult = await this.loadSurveyResultRepository.loadBySurveyId(surveyId)
+  async load (surveyId: string): Promise<SurveyResultModel> {
+    let surveyResult = await this.loadSurveyResultRepository.loadBySurveyId(surveyId)
     if (!surveyResult) {
-      await this.loadSurveyByIdRepository.loadById(surveyId)
+      const survey = await this.loadSurveyByIdRepository.loadById(surveyId)
+      surveyResult = {
+        surveyId: survey.id,
+        question: survey.question,
+        date: survey.date,
+        answers: survey.answers.map(answer => {
+          return Object.assign({}, answer, {
+            count: 0,
+            percent: 0
+          })
+        })
+      }
     }
     return surveyResult
   }
