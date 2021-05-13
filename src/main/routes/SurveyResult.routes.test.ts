@@ -68,7 +68,8 @@ describe('SurveyResult Routes', () => {
         .put(`/api/surveys/${response.ops[0]._id}/results`)
         .set('x-access-token', accessToken)
         .send({
-          answer: 'Answer 1'
+          answer: 'Answer 1',
+          image: 'any_image'
         })
         .expect(200)
     })
@@ -87,9 +88,6 @@ describe('SurveyResult Routes', () => {
         question: 'Question',
         answers: [{
           answer: 'Answer 1',
-          image: 'any_image'
-        }, {
-          answer: 'Answer 2'
         }],
         date: new Date()
       })
