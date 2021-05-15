@@ -14,8 +14,9 @@ type SutTypes = {
 
 const mockRequest = (): HttpRequest => ({
   params: {
-    surveyId: 'any_id'
-  }
+    surveyId: 'any_survey_id',
+  },
+  accountId: 'any_account_id'
 })
 
 const makeSut = (): SutTypes => {
@@ -40,7 +41,7 @@ describe('LoadSurveyResult Controller', () => {
     const { sut, loadSurveyByIdStub } = makeSut()
     const loadByIdSpy = jest.spyOn(loadSurveyByIdStub, 'loadById')
     await sut.handle(mockRequest())
-    expect(loadByIdSpy).toHaveBeenCalledWith('any_id')
+    expect(loadByIdSpy).toHaveBeenCalledWith('any_survey_id')
   })
 
   test('should return 403 if LoadSurveyById returns null', async () => {
@@ -61,7 +62,7 @@ describe('LoadSurveyResult Controller', () => {
     const { sut, loadSurveyResultStub } = makeSut()
     const loadSpy = jest.spyOn(loadSurveyResultStub, 'load')
     await sut.handle(mockRequest())
-    expect(loadSpy).toHaveBeenCalledWith('any_id')
+    expect(loadSpy).toHaveBeenCalledWith('any_survey_id', 'any_account_id')
   })
 
   test('should return 500 if LoadSurveyResult throws', async () => {
