@@ -1,30 +1,39 @@
-import { AddAccount, AddAccountParams, Authentication, AuthenticationParams, LoadAccountByToken } from '@domain/usecases/account'
-import { AccountModel } from '@domain/models/Account'
-import { mockAccountModel } from '@domain/test'
+import { AddAccount, Authentication, LoadAccountByToken } from '@domain/usecases/account'
+import faker from 'faker'
 
-export const mockAddAccount = (): AddAccount => {
-  class AddAccountStub implements AddAccount {
-    async create (account: AddAccountParams): Promise<AccountModel> {
-      return new Promise(resolve => resolve(mockAccountModel()))
-    }
+export class AddAccountSpy implements AddAccount {
+  params: AddAccount.Params
+  result = true
+
+  async create (params: AddAccount.Params): Promise<AddAccount.Result> {
+    this.params = params
+    return this.result
   }
-  return new AddAccountStub()
 }
 
-export const mockAuthentication = (): Authentication => {
-  class AuthenticationStub implements Authentication {
-    async auth (authentication: AuthenticationParams): Promise<string> {
-      return new Promise(resolve => resolve('any_token'))
-    }
+export class AuthenticationSpy implements Authentication {
+  params: Authentication.Params
+  result = {
+    accessToken: faker.datatype.uuid(),
+    name: faker.name.findName()
   }
-  return new AuthenticationStub()
+
+  async auth (params: Authentication.Params): Promise<Authentication.Result> {
+    this.params = params
+    return this.result
+  }
 }
 
-export const mockLoadAccountByToken = (): LoadAccountByToken => {
-  class LoadAccountByTokenStub implements LoadAccountByToken {
-    async load (accessToken: string, role?: string): Promise<AccountModel> {
-      return new Promise(resolve => resolve(mockAccountModel()))
-    }
+export class LoadAccountByTokenSpy implements LoadAccountByToken {
+  accessToken: string;
+  role: string;
+  result = {
+    id: faker.datatype.uuid()
   }
-  return new LoadAccountByTokenStub()
+  async load (accessToken: string, role?: string): Promise<LoadAccountByToken.Result> {
+    this.accessToken = accessToken
+    this.role = role
+    return this.result
+  }
 }
+

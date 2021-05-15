@@ -1,35 +1,35 @@
 import { MissingParamError } from '@shared/errors'
 import { Validation } from '@shared/protocols'
-import { mockValidation } from '@validation/test'
+import { ValidationSpy } from '@validation/test'
 import { ValidationComposite } from './ValidationComposite'
 
 type SutTypes = {
   sut: ValidationComposite;
-  validationStubs: Validation[];
+  validationSpy: ValidationSpy[];
 }
 
 const makeSut = (): SutTypes => {
-  const validationStubs = [mockValidation(), mockValidation()]
-  const sut = new ValidationComposite(validationStubs)
+  const validationSpy = [new ValidationSpy(), new ValidationSpy()]
+  const sut = new ValidationComposite(validationSpy)
 
   return {
     sut,
-    validationStubs
+    validationSpy
   }
 }
 
 describe('Validation Composite', () => {
   test('should return an error if any validation fails', () => {
-    const { sut, validationStubs } = makeSut()
-    jest.spyOn(validationStubs[0], 'validate').mockReturnValueOnce(new MissingParamError('field'))
+    const { sut, validationSpy } = makeSut()
+    jest.spyOn(validationSpy[0], 'validate').mockReturnValueOnce(new MissingParamError('field'))
     const error = sut.validate({ field: 'any_value' })
     expect(error).toEqual(new MissingParamError('field'))
   })
 
   test('should return the first error if more then one validation fails', () => {
-    const { sut, validationStubs } = makeSut()
-    jest.spyOn(validationStubs[0], 'validate').mockReturnValueOnce(new Error())
-    jest.spyOn(validationStubs[1], 'validate').mockReturnValueOnce(new MissingParamError('field'))
+    const { sut, validationSpy } = makeSut()
+    jest.spyOn(validationSpy[0], 'validate').mockReturnValueOnce(new Error())
+    jest.spyOn(validationSpy[1], 'validate').mockReturnValueOnce(new MissingParamError('field'))
     const error = sut.validate({ field: 'any_value' })
     expect(error).toEqual(new Error())
   })
