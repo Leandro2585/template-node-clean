@@ -2,42 +2,62 @@ import { AddAccountRepository } from '@data/protocols/database/account/AddAccoun
 import { LoadAccountByTokenRepository } from '@data/protocols/database/account/LoadAccountByTokenRepository'
 import { UpdateAccessTokenRepository } from '@data/protocols/database/account/UpdateAccessTokenRepository'
 import { LoadAccountByEmailRepository } from '@data/usecases/account/AddAccount/DBAddAccountProtocols'
-import { AccountModel } from '@domain/models/Account'
 import { mockAccountModel } from '@domain/test'
-import { AddAccountParams } from '@domain/usecases/account'
+import faker from 'faker'
 
-export const mockAddAccountRepository = (): AddAccountRepository => {
-  class AddAccountRepositoryStub implements AddAccountRepository {
-    async create (data: AddAccountParams): Promise<AccountModel> {
-      return Promise.resolve(mockAccountModel())
-    }
+export class AddAccountRepositorySpy implements AddAccountRepository {
+  params: AddAccountRepository.Params
+  result = {
+    id: faker.datatype.uuid(),
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+    password: faker.internet.password()
   }
-  return new AddAccountRepositoryStub()
+  async create (params: AddAccountRepository.Params): Promise<AddAccountRepository.Result> {
+    this.params = params
+    return this.result
+  }
 }
 
-export const mockLoadAccountByEmailRepository = (): LoadAccountByEmailRepository => {
-  class LoadAccountByEmailRepositoryStub implements LoadAccountByEmailRepository {
-    async loadByEmail (email: string): Promise<AccountModel> {
-      return Promise.resolve(mockAccountModel())
-    }
+export class LoadAccountByEmailRepositorySpy implements LoadAccountByEmailRepository {
+  email: string;
+  result = {
+    id: faker.datatype.uuid(),
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+    password: faker.internet.password()
   }
-  return new LoadAccountByEmailRepositoryStub()
+
+  async loadByEmail (email: string): Promise<LoadAccountByEmailRepository.Result> {
+    this.email = email
+    return this.result
+  }
 }
 
-export const mockLoadAccountByTokenRepository = (): LoadAccountByTokenRepository => {
-  class LoadAccountByTokenRepositoryStub implements LoadAccountByTokenRepository {
-    loadByToken (accessToken: string, role?: string): Promise<AccountModel> {
-      return Promise.resolve(mockAccountModel())
-    }
+export class LoadAccountByTokenRepositorySpy implements LoadAccountByTokenRepository {
+  accessToken: string;
+  role: string;
+  result = {
+    id: faker.datatype.uuid(),
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+    password: faker.internet.password()
   }
-  return new LoadAccountByTokenRepositoryStub()
+
+  async loadByToken (accessToken: string, role?: string): Promise<LoadAccountByTokenRepository.Result> {
+    this.accessToken = accessToken
+    this.role = role
+    return this.result
+  }
 }
 
-export const mockUpdateAccessTokenRepository = (): UpdateAccessTokenRepository => {
-  class UpdateAccessTokenRepositoryStub implements UpdateAccessTokenRepository {
-    async updateAccessToken (id: string, token: string): Promise<void> {
-      return Promise.resolve()
-    }
+export class UpdateAccessTokenRepositorySpy implements UpdateAccessTokenRepository {
+  id: string;
+  token: string;
+
+  async updateAccessToken (id: string, token: string): Promise<void> {
+    this.id = id
+    this.token = token
   }
-  return new UpdateAccessTokenRepositoryStub()
 }
+

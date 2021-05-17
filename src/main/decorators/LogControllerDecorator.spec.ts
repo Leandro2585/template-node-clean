@@ -1,18 +1,16 @@
 import { LogErrorRepository } from '@data/protocols/database/log/LogErrorRepository'
-import { mockLogErrorRepository } from '@data/test'
+import { LogErrorRepositorySpy } from '@data/test'
 import { AccountModel } from '@domain/models/Account'
 import { mockAccountModel } from '@domain/test'
 import { ok, serverError } from '@shared/helpers/http/HttpHelper'
 import { Controller, HttpRequest, HttpResponse } from '@shared/protocols'
 import { LogControllerDecorator } from './LogControllerDecorator'
+import faker from 'faker'
 
 type SutTypes = {
   sut: LogControllerDecorator;
-  controllerStub: Controller;
-  logErrorRepositoryStub: LogErrorRepository;
-  fakeRequest: HttpRequest;
-  fakeAccount: AccountModel;
-  fakeServerErrorStub: HttpResponse;
+  controllerSpy: ControllerSpy;
+  logErrorRepositorySpy: LogErrorRepositorySpy;
 }
 
 const mockRequest = (): HttpRequest => ({
@@ -24,63 +22,51 @@ const mockRequest = (): HttpRequest => ({
   }
 })
 
-const makeFakeServerError = (): HttpResponse => {
+const mockServerError = (): HttpResponse => {
   const fakeError = new Error()
   fakeError.stack = 'any_stack'
   return serverError(fakeError)
 }
 
-const makeController = (): Controller => {
-  class ControllerStub implements Controller {
-    async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-      return new Promise(resolve => resolve(ok(mockAccountModel())))
-    }
+class ControllerSpy implements Controller {
+  httpResponse = ok(faker.datatype.uuid())
+  request: HttpRequest
+  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+    this.request = httpRequest
+    return this.httpResponse
   }
-
-  return new ControllerStub()
 }
 
 const makeSut = (): SutTypes => {
-  const controllerStub = makeController()
-  const logErrorRepositoryStub = mockLogErrorRepository()
-  const fakeRequest = mockRequest()
-  const fakeAccount = mockAccountModel()
-  const fakeServerErrorStub = makeFakeServerError()
-  const sut = new LogControllerDecorator(controllerStub, logErrorRepositoryStub)
+  const controllerSpy = new ControllerSpy()
+  const logErrorRepositorySpy = new LogErrorRepositorySpy()
+  const sut = new LogControllerDecorator(controllerSpy, logErrorRepositorySpy)
   return {
     sut,
-    controllerStub,
-    logErrorRepositoryStub,
-    fakeServerErrorStub,
-    fakeRequest,
-    fakeAccount
+    controllerSpy,
+    logErrorRepositorySpy
   }
 }
 
 describe('LogController Decorator', () => {
   test('should call controller handle', async () => {
-    const { sut, controllerStub, fakeRequest } = makeSut()
-    const handleSpy = jest.spyOn(controllerStub, 'handle')
-
-    await sut.handle(fakeRequest)
-    expect(handleSpy).toHaveBeenCalledWith(fakeRequest)
+    const { sut, controllerSpy } = makeSut()
+    const request = faker.lorem.sentence()
+    await sut.handle(request)
+    expect(controllerSpy.request).toEqual(request)
   })
 
   test('should return the same result of the controller', async () => {
-    const { sut, fakeRequest, fakeAccount } = makeSut()
-
-    const httpResponse = await sut.handle(fakeRequest)
-    expect(httpResponse).toEqual(ok(fakeAccount))
+    const { sut, controllerSpy } = makeSut()
+    const httpResponse = await sut.handle(faker.lorem.sentence())
+    expect(httpResponse).toEqual(controllerSpy.httpResponse)
   })
 
   test('should call LogErrorRepository with correct error if controller returns a server error', async () => {
-    const { sut, controllerStub, logErrorRepositoryStub, fakeRequest, fakeServerErrorStub } = makeSut()
-
-    const logSpy = jest.spyOn(logErrorRepositoryStub, 'logError')
-    jest.spyOn(controllerStub, 'handle').mockReturnValueOnce(Promise.resolve(fakeServerErrorStub))
-
-    await sut.handle(fakeRequest)
-
-    expect(logSpy).toHaveBeenCalledWith('any_stack')
+    const { sut, controllerSpy, logErrorRepositorySpy } = makeSut()
+    const serverError = mockServerError()
+    controllerSpy.httpResponse = serverError
+    await sut.handle(faker.lorem.sentence())
+    expect(logErrorRepositorySpy.stack).toBe(serverError.body.stack)
   })
 })

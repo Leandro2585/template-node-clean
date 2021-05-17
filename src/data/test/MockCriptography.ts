@@ -1,37 +1,48 @@
 import { Decrypter, Encrypter, HashComparer, Hasher } from '@data/protocols/criptography'
+import faker from 'faker'
 
-export const mockEncrypter = (): Encrypter => {
-  class EncrypterStub implements Encrypter {
-    encrypt (payload: string): Promise<string> {
-      return Promise.resolve('any_token')
-    }
+export class HasherSpy implements Hasher {
+  payload: string;
+  result = faker.datatype.uuid();
+
+  async hash(payload: string): Promise<string> {
+    this.payload = payload
+    return this.result
   }
-  return new EncrypterStub()
 }
 
-export const mockDecrypter = (): Decrypter => {
-  class DecrypterStub implements Decrypter {
-    async decrypt (payload: string): Promise<string> {
-      return Promise.resolve('any_value')
-    }
+export class HashComparerSpy implements HashComparer {
+  payload: string;
+  hashed: string;
+  isValid = true
+
+  async compare(payload: string, hashed: string): Promise<boolean> {
+    this.payload = payload
+    this.hashed = hashed
+    return this.isValid
   }
-  return new DecrypterStub()
 }
 
-export const mockHasher = (): Hasher => {
-  class HasherStub implements Hasher {
-    async hash (payload: string): Promise<string> {
-      return Promise.resolve('hashed_password')
-    }
+export class EncrypterSpy implements Encrypter {
+  hashed = faker.datatype.uuid();
+  payload: string;
+
+  async encrypt (payload: string): Promise<string> {
+    this.payload = payload
+    return this.hashed
   }
-  return new HasherStub()
 }
 
-export const mockHashComparer = (): HashComparer => {
-  class HashComparerStub implements HashComparer {
-    async compare (value: string, hash: string): Promise<boolean> {
-      return Promise.resolve(true)
-    }
+export class DecrypterSpy implements Decrypter {
+  payload = faker.internet.password();
+  hashed: string;
+
+  async decrypt (hashed: string): Promise<string> {
+    this.hashed = hashed
+    return this.payload
   }
-  return new HashComparerStub()
 }
+
+
+
+

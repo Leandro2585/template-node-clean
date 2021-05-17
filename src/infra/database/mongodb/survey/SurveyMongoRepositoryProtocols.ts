@@ -1,6 +1,0 @@
-export * from '@data/protocols/database/survey/LoadSurveysRepository'
-export * from '@data/protocols/database/survey/AddSurveyRepository'
-export * from '@domain/models/Survey'
-export * from '@domain/usecases/survey/AddSurvey'
-export * from '../helpers/MongoHelper'
-export * from '@data/usecases/survey/LoadSurveyById/DBLoadSurveyByIdProtocols'

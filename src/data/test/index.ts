@@ -1,5 +1,3 @@
 export * from './MockDBLog'
-export * from './MockDBSurvey'
 export * from './MockDBAccount'
 export * from './MockCriptography'
-export * from './MockDBSurveyResult'
