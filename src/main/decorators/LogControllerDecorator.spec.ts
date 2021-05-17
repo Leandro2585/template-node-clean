@@ -13,15 +13,6 @@ type SutTypes = {
   logErrorRepositorySpy: LogErrorRepositorySpy;
 }
 
-const mockRequest = (): HttpRequest => ({
-  body: {
-    name: 'any_name',
-    email: 'any_mail@mail.com',
-    password: 'any_password',
-    confirmPassword: 'any_password'
-  }
-})
-
 const mockServerError = (): HttpResponse => {
   const fakeError = new Error()
   fakeError.stack = 'any_stack'
