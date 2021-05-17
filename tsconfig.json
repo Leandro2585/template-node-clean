@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "outDir": "./build",
-    "baseUrl": "./src",
-    "rootDir": "src",
+    "outDir": "build",
+    "baseUrl": "src",
+    "rootDirs": ["src","tests"],
     "module": "commonjs",
     "target": "es2020",
     "esModuleInterop": true,
@@ -12,10 +12,12 @@
       "@domain/*": ["domain/*"],
       "@infra/*": ["infra/*"],
       "@validation/*": ["validation/*"],
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
+      "@tests/*": ["../tests/*"]
     }
   },
   "include": [
-    "src"
+    "src",
+    "tests"
   ]
 }

@@ -1,7 +1,0 @@
-export * from '@data/protocols/database/account/AddAccountRepository'
-export * from '@data/protocols/database/account/LoadAccountByEmailRepository'
-export * from '@data/protocols/database/account/LoadAccountByTokenRepository'
-export * from '@data/protocols/database/account/UpdateAccessTokenRepository'
-export * from '@domain/models/Account'
-export * from '@domain/usecases/account'
-export * from '../helpers/MongoHelper'

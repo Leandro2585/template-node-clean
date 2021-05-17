@@ -1,4 +1,4 @@
-import { LoadAccountByEmailRepositorySpy } from '@data/test';
+import { LoadAccountByEmailRepositorySpy } from '@tests/data/fakes';
 import { AccountModel } from '@domain/models/Account'
 
 export interface LoadAccountByEmailRepository {
