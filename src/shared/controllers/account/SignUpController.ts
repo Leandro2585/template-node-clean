@@ -18,12 +18,12 @@ export class SignUpController implements Controller {
         return badRequest(error)
       }
       const { name, email, password } = request
-      const account = await this.addAccount.create({
+      const isValid = await this.addAccount.create({
         name,
         email,
         password
       })
-      if (!account) {
+      if (!isValid) {
         return forbidden(new EmailInUseError())
       }
       const authData = await this.authentication.auth({

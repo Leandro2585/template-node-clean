@@ -4,11 +4,11 @@ import faker from 'faker'
 
 export class AddAccountSpy implements AddAccount {
   params: AddAccount.Params
-  result = mockAccountModel()
+  isValid = true
 
   async create (params: AddAccount.Params): Promise<AddAccount.Result> {
     this.params = params
-    return this.result
+    return this.isValid
   }
 }
 

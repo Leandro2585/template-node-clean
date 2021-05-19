@@ -1,5 +1,3 @@
-import { AccountModel } from "@domain/models/Account";
-
 export interface AddAccount {
   create(account: AddAccount.Params): Promise<AddAccount.Result>;
 }
@@ -11,5 +9,5 @@ export namespace AddAccount {
     password: string;
   }
 
-  export type Result = AccountModel;
+  export type Result = boolean;
 }

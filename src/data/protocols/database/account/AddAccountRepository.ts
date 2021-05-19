@@ -1,3 +1,4 @@
+import { AccountModel } from '@domain/models/Account'
 import { AddAccount } from '@domain/usecases/account'
 
 export interface AddAccountRepository {
@@ -6,5 +7,5 @@ export interface AddAccountRepository {
 
 export namespace AddAccountRepository {
   export type Params = AddAccount.Params
-  export type Result = AddAccount.Result
+  export type Result = AccountModel
 }
