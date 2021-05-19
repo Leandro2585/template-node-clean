@@ -1,5 +1,5 @@
 import { ok, serverError } from '@shared/helpers/http'
-import { Controller, HttpRequest, HttpResponse } from '@shared/protocols'
+import { Controller, HttpResponse } from '@shared/protocols'
 import { LogControllerDecorator } from '@main/decorators/LogControllerDecorator'
 import { LogErrorRepositorySpy } from '@tests/data/fakes'
 import faker from 'faker'
@@ -18,9 +18,9 @@ const mockServerError = (): HttpResponse => {
 
 class ControllerSpy implements Controller {
   httpResponse = ok(faker.datatype.uuid())
-  request: HttpRequest
-  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    this.request = httpRequest
+  request: any
+  async handle (request: any): Promise<HttpResponse> {
+    this.request = request
     return this.httpResponse
   }
 }

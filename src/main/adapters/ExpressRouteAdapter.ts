@@ -1,9 +1,9 @@
-import { Controller, HttpRequest, HttpResponse } from '@shared/protocols'
+import { Controller, HttpResponse } from '@shared/protocols'
 import { Request, Response } from 'express'
 
 export const adaptRoute = (controller: Controller) => {
   return async (request: Request, response: Response) => {
-    const httpRequest: HttpRequest = {
+    const httpRequest = {
       ...(request.body || {}),
       ...(request.params || {}),
       accountId: request.accountId

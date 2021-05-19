@@ -1,7 +1,6 @@
 import { SignUpController } from '@shared/controllers/account'
 import { EmailInUseError, MissingParamError, ServerError } from '@shared/errors'
 import { badRequest, forbidden, ok, serverError } from '@shared/helpers/http'
-import { HttpRequest } from '@shared/protocols'
 import { AddAccountSpy, AuthenticationSpy, ValidationSpy } from '@tests/shared/fakes'
 import { throwError } from '@tests/domain/fakes'
 import faker from 'faker'
@@ -13,15 +12,14 @@ type SutTypes = {
   authenticationSpy: AuthenticationSpy;
 }
 
-const mockRequest = (): HttpRequest => {
+const mockRequest = (): SignUpController.Request => {
   const password = faker.internet.password()
   return ({
-  body: {
     name: faker.internet.userName(),
     email: faker.internet.email(),
     password,
     confirmPassword: password
-  }})
+  })
 }
 
 const makeSut = (): SutTypes => {
@@ -44,9 +42,9 @@ describe('SignUp Controller', () => {
     const request = mockRequest()
     await sut.handle(request)
     expect(addAccountSpy.params).toEqual({ 
-      name: request.body.name,
-      email: request.body.email,
-      password: request.body.password 
+      name: request.name,
+      email: request.email,
+      password: request.password 
     })
   })
 
@@ -77,7 +75,7 @@ describe('SignUp Controller', () => {
     const { sut, validationSpy } = makeSut()
     const request = mockRequest()
     await sut.handle(request)
-    expect(validationSpy.input).toEqual(request.body)
+    expect(validationSpy.input).toEqual(request)
   })
 
   test('should return 400 if validations returns an error', async () => {
@@ -92,8 +90,8 @@ describe('SignUp Controller', () => {
     const request = mockRequest()
     await sut.handle(request)
     expect(authenticationSpy.params).toEqual({
-      email: request.body.email,
-      password: request.body.password
+      email: request.email,
+      password: request.password
     })
   })
 
