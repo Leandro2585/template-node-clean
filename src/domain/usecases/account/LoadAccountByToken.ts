@@ -5,5 +5,7 @@ export interface LoadAccountByToken {
 }
 
 export namespace LoadAccountByToken {
-  export type Result = AccountModel;
+  export type Result = {
+    id: string;
+  }
 }

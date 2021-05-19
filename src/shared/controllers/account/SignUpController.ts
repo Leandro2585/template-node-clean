@@ -26,11 +26,11 @@ export class SignUpController implements Controller {
       if (!isValid) {
         return forbidden(new EmailInUseError())
       }
-      const authData = await this.authentication.auth({
+      const authenticationModel = await this.authentication.auth({
         email,
         password
       })
-      return ok(authData)
+      return ok(authenticationModel)
     } catch (error) {
       return serverError(error)
     }
