@@ -1,5 +1,5 @@
-import { hash } from 'bcrypt'
 import request from 'supertest'
+import { hash } from 'bcrypt'
 import { Collection } from 'mongodb'
 import { MongoHelper } from '@infra/mongodb'
 import app from '@main/config/app'
