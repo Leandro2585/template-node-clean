@@ -19,7 +19,7 @@
 </p>
 
 <h4 align="center">
-	🚧  Clean Server :node.js In Development 🚀 🚧
+	🚧  Clean Server - In Development 🚀 🚧
 </h4>
 
 <p align="center">
