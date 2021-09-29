@@ -5951,10 +5951,23 @@ mongodb-memory-server@6.9.6:
   dependencies:
     mongodb-memory-server-core "6.9.6"
 
-mongodb@^3.6.2, mongodb@^3.6.5:
+mongodb@^3.6.2:
   version "3.6.7"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.7.tgz#cea14a4fdca653f689c7831a3dcad4c97dedb81b"
   integrity sha512-VXW2bWz47LhAEw0qs8Mk2zRgQwgbXH16KAwQFtylBu0zXO8rkQmA8ncsYbmICaVutZeINRlXYXG3MDIz90NM3g==
+  dependencies:
+    bl "^2.2.1"
+    bson "^1.1.4"
+    denque "^1.4.1"
+    optional-require "^1.0.3"
+    safe-buffer "^5.1.2"
+  optionalDependencies:
+    saslprep "^1.0.0"
+
+mongodb@^3.6.9:
+  version "3.6.10"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.10.tgz#f10e990113c86b195c8af0599b9b3a90748b6ee4"
+  integrity sha512-fvIBQBF7KwCJnDZUnFFy4WqEFP8ibdXeFANnylW19+vOwdjOAvqIzPdsNCEMT6VKTHnYu4K64AWRih0mkFms6Q==
   dependencies:
     bl "^2.2.1"
     bson "^1.1.4"
