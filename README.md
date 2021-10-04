@@ -12,7 +12,7 @@
     <img alt="Stargazers" src="https://img.shields.io/github/stars/Leandro2585/template-node-clean?style=social">
   </a>
 
-  <a href="https://github.com.br/Leandro2585">
+  <a href="https://github.com/Leandro2585">
     <img alt="Feito pela Leandro" src="https://img.shields.io/badge/made%20by-Leandro-%237519C1">
   </a>
 
