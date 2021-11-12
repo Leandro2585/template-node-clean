@@ -73,7 +73,7 @@
     "module-alias": "^2.2.2",
     "mongo-round": "^1.0.0",
     "mongodb": "^3.7.2",
-    "nodemon": "^2.0.13",
+    "nodemon": "^2.0.14",
     "swagger-ui-express": "^4.1.6",
     "validator": "^13.7.0"
   },
