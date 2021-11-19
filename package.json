@@ -68,7 +68,7 @@
     "apollo-server-express": "^2.25.2",
     "bcrypt": "^5.0.1",
     "express": "^4.17.1",
-    "graphql": "^15.6.1",
+    "graphql": "^15.7.2",
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
     "mongo-round": "^1.0.0",
