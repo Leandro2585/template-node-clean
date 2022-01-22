@@ -1,4 +1,4 @@
-import { Controller } from '@shared/protocols'
+import { Controller } from '@app/protocols'
 import { LogMongoRepository } from '@infra/mongodb'
 import { LogControllerDecorator } from '@main/decorators/LogControllerDecorator'
 

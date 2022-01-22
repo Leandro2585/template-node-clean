@@ -1,4 +1,4 @@
-import { InvalidParamError } from '@shared/errors'
+import { InvalidParamError } from '@app/errors'
 import { CompareFieldsValidation } from '@validation/validators/CompareFieldsValidation'
 import faker from 'faker'
 

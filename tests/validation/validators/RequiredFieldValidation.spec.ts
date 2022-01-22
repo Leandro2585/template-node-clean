@@ -1,4 +1,4 @@
-import { MissingParamError } from '@shared/errors'
+import { MissingParamError } from '@app/errors'
 import { RequiredFieldValidation } from '@validation/validators'
 
 const makeSut = (): RequiredFieldValidation => {

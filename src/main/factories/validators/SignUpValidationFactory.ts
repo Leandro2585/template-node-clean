@@ -1,6 +1,6 @@
 import { ValidationComposite, RequiredFieldValidation, EmailValidation, CompareFieldsValidation } from '@validation/validators'
 import { EmailValidatorAdapter } from '@infra/validators/EmailValidatorAdapter'
-import { Validation } from '@shared/protocols'
+import { Validation } from '@app/protocols'
 
 export const makeSignUpValidation = (): ValidationComposite => {
   const validations: Validation[] = []

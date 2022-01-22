@@ -1,8 +1,8 @@
-import { AccessDeniedError } from '@shared/errors'
-import { forbidden, ok, serverError } from '@shared/helpers/http'
-import { AuthMiddleware } from '@shared/middlewares/AuthMiddleware'
+import { AccessDeniedError } from '@app/errors'
+import { forbidden, ok, serverError } from '@app/helpers/http'
+import { AuthMiddleware } from '@app/middlewares/AuthMiddleware'
 import { throwError } from '@tests/domain/fakes'
-import { LoadAccountByTokenSpy } from '@tests/shared/fakes'
+import { LoadAccountByTokenSpy } from '@tests/application/fakes'
 import faker from 'faker'
 
 type SutTypes = {

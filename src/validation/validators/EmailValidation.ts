@@ -1,5 +1,5 @@
-import { Validation } from '@shared/protocols'
-import { InvalidParamError } from '@shared/errors'
+import { Validation } from '@app/protocols'
+import { InvalidParamError } from '@app/errors'
 import { EmailValidator } from '../protocols/EmailValidator'
 
 export class EmailValidation implements Validation {

@@ -1,4 +1,4 @@
-import { InvalidParamError } from '@shared/errors'
+import { InvalidParamError } from '@app/errors'
 import { EmailValidation } from '@validation/validators/EmailValidation'
 import { EmailValidatorSpy } from '@tests/validation/fakes'
 

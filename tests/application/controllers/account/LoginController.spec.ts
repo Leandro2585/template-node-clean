@@ -1,7 +1,7 @@
-import { MissingParamError } from '@shared/errors'
-import { LoginController } from '@shared/controllers/account'
-import { badRequest, serverError, unauthorized, ok } from '@shared/helpers/http'
-import { AuthenticationSpy, ValidationSpy } from '@tests/shared/fakes'
+import { MissingParamError } from '@app/errors'
+import { LoginController } from '@app/controllers/account'
+import { badRequest, serverError, unauthorized, ok } from '@app/helpers/http'
+import { AuthenticationSpy, ValidationSpy } from '@tests/application/fakes'
 import { throwError } from '@tests/domain/fakes'
 import faker from 'faker'
 

@@ -1,7 +1,7 @@
-import { SignUpController } from '@shared/controllers/account'
-import { EmailInUseError, MissingParamError, ServerError } from '@shared/errors'
-import { badRequest, forbidden, ok, serverError } from '@shared/helpers/http'
-import { AddAccountSpy, AuthenticationSpy, ValidationSpy } from '@tests/shared/fakes'
+import { SignUpController } from '@app/controllers/account'
+import { EmailInUseError, MissingParamError, ServerError } from '@app/errors'
+import { badRequest, forbidden, ok, serverError } from '@app/helpers/http'
+import { AddAccountSpy, AuthenticationSpy, ValidationSpy } from '@tests/application/fakes'
 import { throwError } from '@tests/domain/fakes'
 import faker from 'faker'
 

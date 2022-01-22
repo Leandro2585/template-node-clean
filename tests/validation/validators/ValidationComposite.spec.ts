@@ -1,4 +1,4 @@
-import { MissingParamError } from '@shared/errors'
+import { MissingParamError } from '@app/errors'
 import { ValidationComposite } from '@validation/validators/ValidationComposite'
 import { ValidationSpy } from '@tests/validation/fakes'
 

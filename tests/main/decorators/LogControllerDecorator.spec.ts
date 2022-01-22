@@ -1,8 +1,17 @@
-import { ok, serverError } from '@shared/helpers/http'
-import { Controller, HttpResponse } from '@shared/protocols'
+import { ok, serverError } from '@app/helpers/http'
+import { Controller, HttpResponse } from '@app/protocols'
 import { LogControllerDecorator } from '@main/decorators/LogControllerDecorator'
 import { LogErrorRepositorySpy } from '@tests/data/fakes'
 import faker from 'faker'
+
+class ControllerSpy implements Controller {
+  httpResponse = ok(faker.datatype.uuid())
+  request: any
+  async handle (request: any): Promise<HttpResponse> {
+    this.request = request
+    return this.httpResponse
+  }
+}
 
 type SutTypes = {
   sut: LogControllerDecorator;
@@ -14,15 +23,6 @@ const mockServerError = (): HttpResponse => {
   const fakeError = new Error()
   fakeError.stack = 'any_stack'
   return serverError(fakeError)
-}
-
-class ControllerSpy implements Controller {
-  httpResponse = ok(faker.datatype.uuid())
-  request: any
-  async handle (request: any): Promise<HttpResponse> {
-    this.request = request
-    return this.httpResponse
-  }
 }
 
 const makeSut = (): SutTypes => {

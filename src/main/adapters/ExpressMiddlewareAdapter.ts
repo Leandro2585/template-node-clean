@@ -1,4 +1,4 @@
-import { Middleware } from '@shared/protocols'
+import { Middleware } from '@app/protocols'
 import { NextFunction, Request, Response } from 'express'
 
 export const adaptMiddleware = (middleware: Middleware) => {

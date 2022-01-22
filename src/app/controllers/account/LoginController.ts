@@ -1,5 +1,5 @@
-import { Controller, HttpResponse, Validation } from '@shared/protocols'
-import { ok, badRequest, serverError, unauthorized } from '@shared/helpers/http'
+import { Controller, HttpResponse, Validation } from '@app/protocols'
+import { ok, badRequest, serverError, unauthorized } from '@app/helpers/http'
 import { Authentication } from '@domain/usecases/account'
 
 export class LoginController implements Controller {

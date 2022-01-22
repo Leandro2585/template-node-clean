@@ -1,4 +1,4 @@
-import { Validation } from '@shared/protocols'
+import { Validation } from '@app/protocols'
 
 export class ValidationSpy implements Validation {
   error: Error = null;

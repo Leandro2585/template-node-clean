@@ -12,7 +12,7 @@
       "@domain/*": ["domain/*"],
       "@infra/*": ["infra/*"],
       "@validation/*": ["validation/*"],
-      "@shared/*": ["shared/*"],
+      "@app/*": ["app/*"],
       "@tests/*": ["../tests/*"]
     }
   },
